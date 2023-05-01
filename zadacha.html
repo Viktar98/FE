@@ -49,45 +49,45 @@
         for (i = 0; i >= 0; i++) {
             hours_depart = prompt('Сначала введите часы:');
             if (0 <= hours_depart && hours_depart < 24) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         alert('Спасибо');
         for (i = 0; i >= 0; i++) {
             minuts_depart = prompt('Теперь введите минуты:');
             if (0 <= minuts_depart && minuts_depart < 60) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         alert('Спасибо');
         for (i = 0; i >= 0; i++) {
             two_one_way = +prompt('Введите 1, если летите в один конец;\nВведите 2, eсли летите с возвращением.');
             if (two_one_way == 1 || two_one_way == 2) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         alert('Спасибо');
         while (two_one_way == 2) {
             days_arrival = +prompt('Сколько дней вы будете там прибывать?');
             if (days_arrival >= 0) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         while (two_one_way == 2) {
             hours_arrival = +prompt('Сколько часов?');
             if (hours_arrival >= 0) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         while (two_one_way == 2) {
             minuts_arrival = +prompt('И сколько минут?');
             if (minuts_arrival >= 0) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         for (i = 0; i >= 0; i++) {
             hours_flight = +prompt('Cколько часов занимает полёт?');
             if (hours_flight >= 0) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
         for (i = 0; i >= 0; i++) {
             minuts_flight = +prompt('И сколько минут?')
             if (minuts_arrival >= 0 && minuts_arrival < 60) break;
-            alert('Ввод некоректный!')
+            alert('Ввод некорректный!')
         }
 
         //Расчёт
