@@ -100,16 +100,20 @@
         let trip_minuts = full_trip_time % 60;
         let hours = (hours_depart + trip_hours) % 24;
         let minuts = (minuts_depart + trip_minuts) % 60;
+        
+        //alert(`Полное время ${full_trip_time} минут. Дни ${trip_days}; Часы ${trip_hours}; Минуты ${trip_minuts}; \n Время ${hours}:${minuts} `)
+
+        //Вывод данных
+        
         let nul = false;
         minuts < 10 ? nul = true : nul = false;
         minuts = String(minuts);
         nul == true ? minuts = '0' + minuts : minuts = minuts;
-
-        //alert(`Полное время ${full_trip_time} минут. Дни ${trip_days}; Часы ${trip_hours}; Минуты ${trip_minuts}; \n Время ${hours}:${minuts} `)
-
-        //Вывод данных
-
-        let string = `Вы вернетесь в ${parseInt(hours)}:${minuts}. `;
+        nul = false;
+        +hours < 10 ? nul = true : nul = false;
+        hours = String(hours);
+        nul == true ? hours = '0' + hours : hours = hours;
+        let string = `Вы вернетесь в ${hours}:${minuts}. `;
         if (trip_days >= 1 || trip_hours >= 1 || trip_minuts >= 1) { string = string + "Через " }
         trip_days % 10 == 1 ? string = string + `${trip_days} день` : string = string;
         trip_days % 10 == 2 || trip_days % 10 == 3 || trip_days % 10 == 4 ? string = string + `${trip_days} дня` : string = string;
