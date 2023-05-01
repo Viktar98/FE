@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Полёт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 90%;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="time" id="departure_time">
+        <input type="date" id="departure_date">
+        <button type="submit">Расчитать</button>
+    </div>
+    <script>
+        let hours_depart = 0;
+        let minuts_depart = 0;
+        let two_one_way = 0;
+        let days_arrival = 0;
+        let hours_arrival = 0;
+        let minuts_arrival = 0;
+        let hours_flight = 0;
+        let minuts_flight = 0;
+
+        // Ввод данных
+
+        alert('Введите время вылета, используя 24ч формат:');
+        for (i = 0; i >= 0; i++) {
+            hours_depart = prompt('Сначала введите часы:');
+            if (0 <= hours_depart && hours_depart < 24) break;
+            alert('Ввод некоректный!')
+        }
+        alert('Спасибо');
+        for (i = 0; i >= 0; i++) {
+            minuts_depart = prompt('Теперь введите минуты:');
+            if (0 <= minuts_depart && minuts_depart < 60) break;
+            alert('Ввод некоректный!')
+        }
+        alert('Спасибо');
+        for (i = 0; i >= 0; i++) {
+            two_one_way = +prompt('Введите 1, если летите в один конец;\nВведите 2, eсли летите с возвращением.');
+            if (two_one_way == 1 || two_one_way == 2) break;
+            alert('Ввод некоректный!')
+        }
+        alert('Спасибо');
+        while (two_one_way == 2) {
+            days_arrival = +prompt('Сколько дней вы будете там прибывать?');
+            if (days_arrival >= 0) break;
+            alert('Ввод некоректный!')
+        }
+        while (two_one_way == 2) {
+            hours_arrival = +prompt('Сколько часов?');
+            if (hours_arrival >= 0) break;
+            alert('Ввод некоректный!')
+        }
+        while (two_one_way == 2) {
+            minuts_arrival = +prompt('И сколько минут?');
+            if (minuts_arrival >= 0) break;
+            alert('Ввод некоректный!')
+        }
+        for (i = 0; i >= 0; i++) {
+            hours_flight = +prompt('Cколько часов занимает полёт?');
+            if (hours_flight > 0) break;
+            alert('Ввод некоректный!')
+        }
+        for (i = 0; i >= 0; i++) {
+            minuts_flight = +prompt('И сколько минут?')
+            if (minuts_arrival >= 0 && minuts_arrival < 60) break;
+            alert('Ввод некоректный!')
+        }
+
+        //Расчёт
+
+        let full_trip_time = hours_flight * 60 + minuts_flight;
+        two_one_way == 2 ? full_trip_time *= 2 : full_trip_time *= 1;
+        two_one_way == 2 ? full_trip_time += (days_arrival * 24 * 60 + hours_arrival * 60 + minuts_arrival) : full_trip_time += 0;
+        let trip_days = parseInt(parseInt(full_trip_time / 60) / 24);
+        let trip_hours = parseInt(full_trip_time / 60) % 24;
+        let trip_minuts = full_trip_time % 60;
+        let hours = (hours_depart + trip_hours) % 24;
+        let minuts = (minuts_depart + trip_minuts) % 60;
+        let nul = false;
+        minuts < 10 ? nul = true : nul = false;
+        minuts = String(minuts);
+        nul == true ? minuts = '0' + minuts : minuts = minuts;
+
+        //alert(`Полное время ${full_trip_time} минут. Дни ${trip_days}; Часы ${trip_hours}; Минуты ${trip_minuts}; \n Время ${hours}:${minuts} `)
+
+        //Вывод данных
+
+        let string = `Вы вернетесь в ${parseInt(hours)}:${minuts}. `;
+        if (trip_days >= 1 || trip_hours >= 1 || trip_minuts >= 1) { string = string + "Через " }
+        trip_days % 10 == 1 ? string = string + `${trip_days} день` : string = string;
+        trip_days % 10 == 2 || trip_days % 10 == 3 || trip_days % 10 == 4 ? string = string + `${trip_days} дня` : string = string;
+        trip_days >= 5 && ((trip_days % 10 != 1) && (trip_days % 10 != 2) && (trip_days % 10 != 3) && (trip_days % 10 != 4)) ? string = string + `${trip_days} дней` : string = string;
+        trip_days >= 1 && (trip_hours >= 1 || trip_minuts >= 1) ? string = string + ", " : string = string;
+        trip_hours % 10 == 1 ? string = string + `${trip_hours} час` : string = string;
+        trip_hours % 10 == 2 || trip_hours % 10 == 3 || trip_hours % 10 == 4 ? string = string + `${trip_hours} часа` : string = string;
+        trip_hours >= 5 && ((trip_hours % 10 != 1) && (trip_hours % 10 != 2) && (trip_hours % 10 != 3) && (trip_hours % 10 != 4)) ? string = string + `${trip_hours} часов` : string = string;
+        trip_hours >= 1 && trip_minuts >= 1 ? string = string + ", " : string = string;
+        trip_minuts % 10 == 1 ? string = string + `${trip_minuts} минуту` : string = string;
+        trip_minuts % 10 == 2 || trip_minuts % 10 == 3 || trip_minuts % 10 == 4 ? string = string + `${trip_minuts} минуты` : string = string;
+        trip_minuts >= 5 && ((trip_minuts % 10 != 1) && (trip_minuts % 10 != 2) && (trip_minuts % 10 != 3) && (trip_minuts % 10 != 4)) ? string = string + `${trip_minuts} минут` : string = string;
+        string = string + ".";
+        alert(string);
+
+    </script>
+</body>
+
+</html>
