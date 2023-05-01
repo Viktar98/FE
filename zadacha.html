@@ -81,7 +81,7 @@
         }
         for (i = 0; i >= 0; i++) {
             hours_flight = +prompt('Cколько часов занимает полёт?');
-            if (hours_flight > 0) break;
+            if (hours_flight >= 0) break;
             alert('Ввод некоректный!')
         }
         for (i = 0; i >= 0; i++) {
@@ -98,10 +98,10 @@
         let trip_days = parseInt(parseInt(full_trip_time / 60) / 24);
         let trip_hours = parseInt(full_trip_time / 60) % 24;
         let trip_minuts = full_trip_time % 60;
-        let hours = (hours_depart + trip_hours) % 24;
-        let minuts = (minuts_depart + trip_minuts) % 60;
+        let hours = (+hours_depart + +trip_hours) % 24;
+        let minuts = (+minuts_depart + +trip_minuts) % 60;
         
-        //alert(`Полное время ${full_trip_time} минут. Дни ${trip_days}; Часы ${trip_hours}; Минуты ${trip_minuts}; \n Время ${hours}:${minuts} `)
+        alert(`${hours_depart}:${minuts_depart}\nПолное время ${full_trip_time} минут. Дни ${trip_days}; Часы ${trip_hours}; Минуты ${trip_minuts}; \n Время ${hours}:${minuts} `)
 
         //Вывод данных
         
