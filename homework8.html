@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*Не дизайн, сугубо для наглядности вывода*/
+
+        #first p:nth-child(odd),#third div:nth-child(odd){background-color: greenyellow}
+        #first p:nth-child(even),#third div:nth-child(even){background-color: rgb(47, 255, 89)}
+        #second p:nth-child(odd){background-color: rgb(92, 85, 237)}
+        #second p:nth-child(even){background-color:blue}
+    </style>
+    </head>
+    
+    <body>
+        <script>
+
+            //Разметка html
+            document.body.innerHTML = `<div id="first" class="numbers"></div>
+                                       <div id = "second" class="string_container" ></div>
+                                       <div id="third" class="users_container"></div>`;
+
+            //Объявление функций (для создания произвольных массивов)        
+            function randomString(i) {
+                let rnd = '';
+                while (rnd.length < i)
+                    rnd += Math.random().toString(36).substring(2);
+                return rnd.substring(0, i);
+            };
+            function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min
+            }
+
+            //Создание произвольных массивов
+            let strings = [];
+            for (let i = 0; i <= getRandomIntInclusive(5, 10); i++) {
+                strings[i] = randomString(getRandomIntInclusive(5, 10))
+            }
+            let users = [];
+            for (let i = 0; i <= getRandomIntInclusive(6, 12); i++) {
+                users[i] = { first_name: randomString(4), last_name: randomString(9), age: getRandomIntInclusive(12, 87) }
+            }
+            //Придумывать вводные данные как-то не по-прогерски ;)
+
+            //Задание 1
+            for (let i = 10; i >= 5; i--) {
+                document.querySelector('#first').innerHTML += `<p>${i * 10}</p>`
+            }
+
+            //Задание 2
+            for (let i = 0; i < strings.length; i++) {
+                document.querySelector('#second').innerHTML += `<p>${strings[i]}</p>`
+            }
+
+            //Задание 3
+            let th = document.querySelector('#third');
+            for (let i = 0; i < users.length; i++) {
+                th.innerHTML += users[i].age < 18 ? '' : `<div class="us">
+                                                          <p>Name: ${users[i].first_name}</p>
+                                                          <p>Surname: ${users[i].last_name}</p>
+                                                          <p>Age: ${users[i].age}</p>
+                                                          </div>`
+            }
+
+        </script>
+    </body>
+
+</html>
