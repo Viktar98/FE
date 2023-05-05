@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h2>Площадь круга</h2>
+        <input type="text" id="R">
+        <p id="output">Введите радиус</p>
+    </form>
+    <script>
+        let R = document.querySelector('#R');
+        let output = document.querySelector('#output');
+        let S = 0;
+        R.addEventListener('input',function(){
+            S = 3.1415 * R.value ** 2;
+            output.textContent = `Площадь равна: ${S}`
+            
+        })
+
+    </script>
+</body>
+</html>
